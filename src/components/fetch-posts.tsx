@@ -24,11 +24,6 @@ export default function FetchPosts() {
     }
   }
 
-  return (
-    <ul>
-      {posts?.map((post) => (
-        <li key={post.id}>{post.title}</li>
-      ))}
-    </ul>
-  )
+return posts;
+
 }
