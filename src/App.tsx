@@ -1,9 +1,12 @@
+import Index from "./pages";
+
+
 function App() {
   
 
   return (
     <div>
-
+      <Index/>
     </div>
   );
 }
