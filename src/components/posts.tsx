@@ -8,23 +8,23 @@ export default function Posts() {
   FetchPosts();
   const blog = useContext(BlogContext);
 
+  //animation
   gsap.registerPlugin(useGSAP);
-
   const container = useRef(null);
-
   useGSAP(
     () => {
-      gsap.to(".box", { stagger: 1, x: 30, opacity: 1 });
+      gsap.fromTo(".card", { stagger: 1, x: -30, opacity: 0 },{ stagger:1, x: 0, opacity: 1 });
     },
     { scope: container }
   );
+
   return (
     <div ref={container}>
-      <div>{blog.isLoading && "Loading..."}</div>
+      {blog.isLoading && <div>{"Loading..."}</div>}
       <ul>
         {blog &&
           blog.posts?.map((post) => (
-            <li className="box opacity-0" key={post.id}>
+            <li className="card opacity-0" key={post.id}>
               {post.title}
             </li>
           ))}
