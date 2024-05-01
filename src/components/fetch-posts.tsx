@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
 import { createClient } from "@supabase/supabase-js";
+import { BlogContext } from "../context/context";
 
 const supabase = createClient(
-    "https://jqdvolylksnursrcbhll.supabase.co",
-    import.meta.env.VITE_ANON_KEY
-  );
+  "https://jqdvolylksnursrcbhll.supabase.co",
+  import.meta.env.VITE_ANON_KEY
+);
 
 export default function FetchPosts() {
-    
-  const [posts, setPosts] = useState<Array<object> | null>([]);
+  const blog = useContext(BlogContext);
 
   useEffect(() => {
     getPosts();
@@ -16,14 +16,13 @@ export default function FetchPosts() {
 
   async function getPosts() {
     try {
-      const { data } = await supabase.from("blogposts").select("*");
-      setPosts(data);
+      const { data }:{data:Array<object>|null} = await supabase.from("blogposts").select("*");
+      blog.setPosts(data);
       console.log(data);
     } catch (error) {
       console.error("Error fetching posts:", error);
+    } finally {
+      blog.setIsLoading(false);
     }
   }
-
-return posts;
-
 }

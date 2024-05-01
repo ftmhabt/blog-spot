@@ -1,17 +1,15 @@
+import { useContext } from "react";
 import FetchPosts from "./fetch-posts";
+import { BlogContext } from "../context/context";
 
 export default function Posts() {
-  
-
-   const posts = FetchPosts();
-  
+  FetchPosts();
+  const blog = useContext(BlogContext);
 
   return (
     <div>
       <ul>
-        {posts?.map((post) => (
-          <li key={post.id}>{post.title}</li>
-        ))}
+        {blog && blog.posts?.map((post) => <li key={post.id}>{post.title}</li>)}
       </ul>
     </div>
   );
