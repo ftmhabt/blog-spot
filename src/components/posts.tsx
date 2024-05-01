@@ -3,8 +3,8 @@ import FetchPosts from "./fetch-posts";
 import { BlogContext } from "../context/context";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import Icon from '@mdi/react';
-import { mdiArrowRight } from '@mdi/js';
+import Icon from "@mdi/react";
+import { mdiArrowRight } from "@mdi/js";
 
 export default function Posts() {
   FetchPosts();
@@ -12,10 +12,15 @@ export default function Posts() {
 
   //animation
   gsap.registerPlugin(useGSAP);
+  gsap.registerPlugin(ScrollTrigger);
   const container = useRef(null);
   useGSAP(
     () => {
-      gsap.fromTo(".card", { stagger: 1, x: -30, opacity: 0 },{ stagger:1, x: 0, opacity: 1 });
+      gsap.fromTo(
+        ".card",
+        { stagger: 1, x: -30, opacity: 0 },
+        { stagger: 1, x: 0, opacity: 1 }
+      );
     },
     { scope: container }
   );
@@ -26,10 +31,16 @@ export default function Posts() {
       <ul className="flex flex-col gap-[1rem] text-[#FAFAFA]">
         {blog &&
           blog.posts?.map((post) => (
-            <li className="card opacity-0 flex flex-col gap-[1rem] bg-[#2E2E2E] p-[1rem] rounded-3xl" key={post.id}>
-                <div className="text-3xl font-bold">{post.title}</div>
-                <div className="font-thin">{post.snippet}</div>
-                <div className="font-thin flex">More <Icon className="self-center" path={mdiArrowRight} size={.7} /></div>
+            <li
+              className="card opacity-0 flex flex-col gap-[1rem] bg-[#2E2E2E] p-[1rem] rounded-3xl"
+              key={post.id}
+            >
+              <div className="text-3xl font-bold">{post.title}</div>
+              <div className="font-thin">{post.snippet}</div>
+              <div className="font-thin flex">
+                More{" "}
+                <Icon className="self-center" path={mdiArrowRight} size={0.7} />
+              </div>
             </li>
           ))}
       </ul>

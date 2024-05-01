@@ -25,7 +25,7 @@ function Search() {
   return (
     <div className="bg-[#F8F8F8] p-[1rem] flex gap-2 mb-[1rem] rounded-3xl">
       <Icon className="text-[#9CA3AF]" path={mdiTextSearchVariant} size={1} />
-      <input className="w-full bg-[#F8F8F8]" type="text" placeholder="Search" />
+      <input className="w-full bg-[#F8F8F8] focus:outline-none" type="text" placeholder="Search" />
     </div>
   );
 }
