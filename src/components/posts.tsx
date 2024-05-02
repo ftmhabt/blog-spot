@@ -12,7 +12,6 @@ export default function Posts() {
 
   //animation
   gsap.registerPlugin(useGSAP);
-  gsap.registerPlugin(ScrollTrigger);
   const container = useRef(null);
   useGSAP(
     () => {
@@ -26,9 +25,9 @@ export default function Posts() {
   );
 
   return (
-    <div ref={container}>
+    <div ref={container} onClick={()=>{}}>
       {blog.isLoading && <div>{"Loading..."}</div>}
-      <ul className="flex flex-col gap-[1rem] text-[#FAFAFA]">
+      <ul className="flex flex-col gap-[1rem] text-[#FAFAFA] sm:flex-row sm:*:min-w-[250px] sm:flex-wrap sm:*:flex-1 ">
         {blog &&
           blog.posts?.map((post) => (
             <li
@@ -38,8 +37,7 @@ export default function Posts() {
               <div className="text-3xl font-bold">{post.title}</div>
               <div className="font-thin">{post.snippet}</div>
               <div className="font-thin flex">
-                More{" "}
-                <Icon className="self-center" path={mdiArrowRight} size={0.7} />
+                More <Icon className="self-center" path={mdiArrowRight} size={0.7} />
               </div>
             </li>
           ))}
