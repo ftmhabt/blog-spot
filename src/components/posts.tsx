@@ -27,16 +27,17 @@ export default function Posts() {
   return (
     <div ref={container} onClick={()=>{}}>
       {blog.isLoading && <div>{"Loading..."}</div>}
-      <ul className="flex flex-col gap-[1rem] text-[#FAFAFA] sm:flex-row sm:*:min-w-[250px] sm:flex-wrap sm:*:flex-1 ">
+      <ul className="grid grid-cols-auto-fit-250 gap-[1rem] text-[#FAFAFA]">
         {blog &&
           blog.posts?.map((post) => (
             <li
-              className="card opacity-0 flex flex-col gap-[1rem] bg-[#2E2E2E] p-[1rem] rounded-3xl"
+              className="card opacity-0 flex flex-col gap-[1rem] bg-[#2E2E2E] p-[1rem] rounded-3xl
+              hover:bg-[#FAFAFA] hover:text-[#2E2E2E] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
               key={post.id}
             >
               <div className="text-3xl font-bold">{post.title}</div>
               <div className="font-thin">{post.snippet}</div>
-              <div className="font-thin flex">
+              <div className="font-thin flex mt-auto">
                 More <Icon className="self-center" path={mdiArrowRight} size={0.7} />
               </div>
             </li>
