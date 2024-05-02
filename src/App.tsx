@@ -1,6 +1,6 @@
-import Index from "./pages";
 import { BlogContext } from "./context/context";
 import { useState } from "react";
+import { Outlet } from "react-router-dom";
 
 function App() {
   const [posts, setPosts] = useState<Array<object>>([]);
@@ -10,7 +10,7 @@ function App() {
       <BlogContext.Provider
         value={{ posts, setPosts, isLoading, setIsLoading }}
       >
-        <Index />
+        <Outlet/>
       </BlogContext.Provider>
     </div>
   );

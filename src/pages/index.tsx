@@ -21,6 +21,7 @@ function Hero() {
   );
 }
 
+
 function Search() {
   return (
     <div className="bg-[#F8F8F8] p-[1rem] flex gap-2 mb-[1rem] rounded-3xl">
